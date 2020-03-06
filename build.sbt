@@ -27,3 +27,9 @@ libraryDependencies ++= Seq(
     //test
     "org.scalatest" %% "scalatest" % "3.1.1" % "test"
 )
+
+
+initialCommands :=
+"""
+      |import breeze.linalg._
+      |""".stripMargin
