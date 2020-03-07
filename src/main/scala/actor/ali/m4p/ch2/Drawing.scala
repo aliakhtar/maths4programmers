@@ -23,6 +23,13 @@ class Drawing {
         //draw the line connecting the points
         plt += plot(x, y, colorcode = "blue")
 
+        //Connect the tip and tail, i.e first and last points
+        val tailToTop = points(Seq(0, -1), ::)
+        val tttX = tailToTop(::, 0)
+        val tttY = tailToTop(::, 1)
+
+        plt += plot(tttX, tttY, '.',  colorcode = "black")
+        plt += plot(tttX, tttY, colorcode = "blue")
 
         fig.refresh()
     }
