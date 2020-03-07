@@ -15,8 +15,8 @@ object Ch2Main extends App {
         (-1,-4), (1,-4), (2,-3), (1,-2), (3,-1), (5,1)
     ).map(_.toDouble)
 
-    //drawDino()
-    ex1()
+    drawDino()
+    //ex1()
 
 
     /**
