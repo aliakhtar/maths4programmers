@@ -2,6 +2,7 @@ package actor.ali.m4p
 
 import actor.ali.m4p.ch2.Drawing
 import breeze.linalg.DenseMatrix
+import breeze.numerics._
 import com.typesafe.scalalogging.Logger
 
 object Ch2Main extends App {
@@ -14,5 +15,26 @@ object Ch2Main extends App {
         (-1,-4), (1,-4), (2,-3), (1,-2), (3,-1), (5,1)
     ).map(_.toDouble)
 
-    new Drawing().polygon(dinoVectors)
+    //drawDino()
+    ex1()
+
+
+    /**
+     * Draw the vectors [(x,x**2) for x in range(-10,11)] as points (dots) using the draw function. What
+     * is the result?
+     */
+    def ex1():Unit = {
+        val matrix = DenseMatrix.zeros[Double](21, 2)
+        (-10 until 11).foreach(x => {
+            matrix(x, 0) = x.toDouble
+            matrix(x, 1) = pow(x, 2).toDouble
+
+        })
+
+        new Drawing().points2D(matrix)
+    }
+
+    def drawDino():Unit = {
+        new Drawing().polygon2D(dinoVectors)
+    }
 }
