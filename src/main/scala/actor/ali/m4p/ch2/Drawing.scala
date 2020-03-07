@@ -15,7 +15,15 @@ class Drawing {
         require(points.cols == 2)
         val x = points(::, 0)
         val y = points(::, 1)
+
+
+        //draw the points
+        plt += plot(x, y, '.',  colorcode = "black")
+
+        //draw the line connecting the points
         plt += plot(x, y, colorcode = "blue")
+
+
         fig.refresh()
     }
 }
