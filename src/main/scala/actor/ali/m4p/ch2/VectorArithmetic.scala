@@ -1,6 +1,7 @@
 package actor.ali.m4p.ch2
 
-import breeze.linalg.DenseVector
+import breeze.linalg._
+import breeze.numerics._
 import com.typesafe.scalalogging.Logger
 
 object VectorArithmetic {
@@ -16,5 +17,16 @@ object VectorArithmetic {
         })
 
         copy
+    }
+
+    /**
+     * Returns the length of a vector using pythagoras theorem
+     */
+    def distance(vector: DenseVector[Double]):Double = {
+        //Distance = sqrt(x^2 + y^2)
+        require(vector.length == 2)
+        val x = vector(0)
+        val y = vector(1)
+        sqrt( (x * x) + (y * y) )
     }
 }
