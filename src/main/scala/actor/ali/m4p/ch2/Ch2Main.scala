@@ -1,5 +1,7 @@
 package actor.ali.m4p.ch2
 
+import java.util.concurrent.atomic.AtomicInteger
+
 import actor.ali.m4p.util.Utils
 import breeze.linalg.{DenseMatrix, DenseVector}
 import breeze.numerics.pow
@@ -92,29 +94,26 @@ object Ch2Main extends App {
     /**
      * Write a function using vector addition to show 100 simultaneous and non-overlapping copies of the
      * dinosaur.
+     *
+     * Note: This will print a bunch of exceptions about ConcurrentModificationExceptions, just ignore them as the
+     * drawings do seem to get drawn correctly regardless. My guess is, drawing.refresh() being called each time
+     * causes these exceptions
      */
     def drawHundredDinos():Unit = {
 
-        //Build 100 copies of DinoVectors, each copy should have the coordinates translated just slightly
+        //Build 100 copies of the translation vectors - just use the values given in the solution for these:
+        val translations = for (x <- (-5 until 5);
+                                y <- (-5 until 5))
+                            yield DenseVector(12.0 * x, 10.8 * y)
 
-        val howMany = 100
+        val dinos = translations.map(t => VectorArithmetic.translate(t, dinoVectors))
 
-        log.info("Generating 100 vectors")
-        val vectors: Seq[DenseMatrix[Double]] = (0 until howMany).map(i => {
-            val delta = DenseVector(i.toDouble * 10, -i.toDouble)
-            VectorArithmetic.translate(delta, dinoVectors)
+        val drawing = new Drawing
+        val counter = new AtomicInteger()
+        dinos.foreach(vectors => {
+            drawing.line2D(vectors) //much better perf than polygon2D since no connecting points
+            val done = counter.incrementAndGet()
+            log.info(s"$done / ${dinos.size} vectors drawn")
         })
-
-        log.info(s"Obtained ${vectors.size} vectors, drawing")
-
-        val drawing  = new Drawing
-        vectors.zipWithIndex.foreach(t => {
-            drawing.polygon2D( t._1 )
-            log.info(s"Drew dino # ${t._2 + 1}")
-        })
-
-        log.info("All dinos drawn")
-
-
     }
 }
