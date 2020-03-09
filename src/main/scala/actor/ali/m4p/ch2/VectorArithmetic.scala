@@ -19,6 +19,26 @@ object VectorArithmetic {
         copy
     }
 
+
+    def addAll(vectors: DenseVector[Double]* ):DenseVector[Double] = {
+        require(vectors.size >= 2) //make sure at least 2 vectors given
+
+        //make sure all vectors are the same length:
+        val lengths = vectors.map(_.length).distinct
+        require(lengths.size == 1)
+
+        val length = lengths.head //should be just 1 length for all vectors
+
+        val result = vectors.head.copy
+
+        (0 until length).foreach(col => {
+            val sum = vectors.map(v => v(col)).sum
+            result(col) = sum
+        })
+
+        result
+    }
+
     /**
      * Returns the length of a vector using pythagoras theorem
      */

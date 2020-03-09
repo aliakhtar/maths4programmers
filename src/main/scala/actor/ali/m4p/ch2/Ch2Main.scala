@@ -6,6 +6,17 @@ import breeze.numerics.pow
 import com.typesafe.scalalogging.Logger
 import org.bouncycastle.jce.provider.PBE.Util
 
+
+/**
+ * Implements exercises, mini projects, and other stuff from Chapter 2.
+ *
+ * - Drawing basic dinosaur: drawDino()
+ * - Plotting (x, x *x): ex1()
+ * - Translating dinoVectors to the left and down: translateDinoVector()
+ * - Adding u + w, u + v, etc: ex2()
+ * - Mini proj 1 (taking in any number of vectors): VectorArithmetic#addAl()
+ */
+
 object Ch2Main extends App {
 
     private val log = Logger("Ch2Main")

@@ -27,4 +27,15 @@ class VectorArithmeticTest extends org.scalatest.FunSuite {
         VectorArithmetic.distance(vec) should be(5)
     }
 
+    test("addAll") {
+        val a = DenseVector(1.0, 2.0)
+        val b = DenseVector(2.0, 4.0)
+        val c = DenseVector(3.0, 6.0)
+        val d = DenseVector(4.0, 8.0)
+        val sum = VectorArithmetic.addAll(a, b, c, d)
+        sum(0) should be (10.0)
+        sum(1) should be(20.0)
+        sum.length should be(2)
+    }
+
 }

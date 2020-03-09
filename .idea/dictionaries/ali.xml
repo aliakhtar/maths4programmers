@@ -2,6 +2,7 @@
   <dictionary name="ali">
     <words>
       <w>linalg</w>
+      <w>proj</w>
     </words>
   </dictionary>
 </component>
