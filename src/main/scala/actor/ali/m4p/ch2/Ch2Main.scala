@@ -18,7 +18,8 @@ object Ch2Main extends App {
 
     //drawDino()
     //ex1()
-    translateDinoVector()
+    //translateDinoVector()
+    ex2()
 
 
     def drawDino():Unit = {
@@ -56,5 +57,20 @@ object Ch2Main extends App {
         val drawing = new Drawing()
         drawing.polygon2D(dinoVectors)
         drawing.polygon2D(dinoVectors2, lineColor = "red")
+    }
+
+    /**
+     * If the vector u = (-2, 0), the vector v = (1.5, 1.5), and the vector w = (4, 1), what are the results of u + v, v + w,
+     * and u + w ? What is the result of u + v + w ?
+     */
+    def ex2():Unit = {
+        val u: DenseVector[Double] = DenseVector(-2.0, 0.0)
+        val v: DenseVector[Double] = DenseVector(1.5, 1.5)
+        val w: DenseVector[Double] = DenseVector(4.0, 1.0)
+
+        println(s"u + v = ${VectorArithmetic.add(u, v)} ")
+        println(s"v + w = ${VectorArithmetic.add(v, w)} ")
+        println(s"u + w = ${VectorArithmetic.add(u, w)} ")
+        println(s"u + v + w = ${VectorArithmetic.add(VectorArithmetic.add(u, v), w)} ")
     }
 }
