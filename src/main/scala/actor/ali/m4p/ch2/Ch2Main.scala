@@ -14,8 +14,9 @@ import org.bouncycastle.jce.provider.PBE.Util
  * - Ex: Plotting (x, x *x): ex1()
  * - Translating dinoVectors to the left and down: translateDinoVector()
  * - Ex: Adding u + w, u + v, etc: ex2()
- * - Mini proj 1 (taking in any number of vectors): VectorArithmetic#addAl()
+ * - Mini proj: (taking in any number of vectors): VectorArithmetic#addAl()
  * - Ex: Translate matrix by adding vector: VectorArithmetic#translate()
+ * - Mini proj: Hundred copies of dino: drawHundredDinos()
  */
 
 object Ch2Main extends App {
@@ -31,7 +32,8 @@ object Ch2Main extends App {
     //drawDino()
     //ex1()
     //translateDinoVector()
-    ex2()
+    //ex2()
+    drawHundredDinos()
 
 
     def drawDino():Unit = {
@@ -84,5 +86,35 @@ object Ch2Main extends App {
         println(s"v + w = ${VectorArithmetic.add(v, w)} ")
         println(s"u + w = ${VectorArithmetic.add(u, w)} ")
         println(s"u + v + w = ${VectorArithmetic.add(VectorArithmetic.add(u, v), w)} ")
+    }
+
+
+    /**
+     * Write a function using vector addition to show 100 simultaneous and non-overlapping copies of the
+     * dinosaur.
+     */
+    def drawHundredDinos():Unit = {
+
+        //Build 100 copies of DinoVectors, each copy should have the coordinates translated just slightly
+
+        val howMany = 100
+
+        log.info("Generating 100 vectors")
+        val vectors: Seq[DenseMatrix[Double]] = (0 until howMany).map(i => {
+            val delta = DenseVector(i.toDouble * 10, -i.toDouble)
+            VectorArithmetic.translate(delta, dinoVectors)
+        })
+
+        log.info(s"Obtained ${vectors.size} vectors, drawing")
+
+        val drawing  = new Drawing
+        vectors.zipWithIndex.foreach(t => {
+            drawing.polygon2D( t._1 )
+            log.info(s"Drew dino # ${t._2 + 1}")
+        })
+
+        log.info("All dinos drawn")
+
+
     }
 }
