@@ -1,6 +1,6 @@
 package actor.ali.m4p.ch2
 
-import breeze.linalg.DenseVector
+import breeze.linalg.{DenseMatrix, DenseVector}
 import com.typesafe.scalalogging.Logger
 import org.scalatest.Matchers._
 
@@ -36,6 +36,16 @@ class VectorArithmeticTest extends org.scalatest.FunSuite {
         sum(0) should be (10.0)
         sum(1) should be(20.0)
         sum.length should be(2)
+    }
+
+    test("translate") {
+        val translation = DenseVector(1.0, 1.0)
+        val orig = DenseMatrix((0.0,0.0), (0.0, 1.0), (-3.0, -3.0) )
+
+        val translated = VectorArithmetic.translate(translation, orig)
+
+        println("Translated:")
+        println(translated) //verify manually, will take too long to write test
     }
 
 }

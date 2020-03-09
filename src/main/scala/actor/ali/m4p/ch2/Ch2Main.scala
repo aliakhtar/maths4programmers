@@ -11,10 +11,11 @@ import org.bouncycastle.jce.provider.PBE.Util
  * Implements exercises, mini projects, and other stuff from Chapter 2.
  *
  * - Drawing basic dinosaur: drawDino()
- * - Plotting (x, x *x): ex1()
+ * - Ex: Plotting (x, x *x): ex1()
  * - Translating dinoVectors to the left and down: translateDinoVector()
- * - Adding u + w, u + v, etc: ex2()
+ * - Ex: Adding u + w, u + v, etc: ex2()
  * - Mini proj 1 (taking in any number of vectors): VectorArithmetic#addAl()
+ * - Ex: Translate matrix by adding vector: VectorArithmetic#translate()
  */
 
 object Ch2Main extends App {

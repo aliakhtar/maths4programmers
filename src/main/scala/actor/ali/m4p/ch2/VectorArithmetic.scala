@@ -49,4 +49,18 @@ object VectorArithmetic {
         val y = vector(1)
         sqrt( (x * x) + (y * y) )
     }
+
+
+    def translate(translation: DenseVector[Double], matrix: DenseMatrix[Double]):DenseMatrix[Double] = {
+
+        val copy = matrix.copy
+        (0 until matrix.rows).foreach(r => {
+            (0 until matrix.cols).foreach(c => {
+                val translated = translation(c) + matrix(r, c)
+                copy(r, c) = translated
+            })
+        })
+
+        copy
+    }
 }
