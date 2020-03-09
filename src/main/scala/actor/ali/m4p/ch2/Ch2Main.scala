@@ -19,6 +19,7 @@ import org.bouncycastle.jce.provider.PBE.Util
  * - Mini proj: (taking in any number of vectors): VectorArithmetic#addAl()
  * - Ex: Translate matrix by adding vector: VectorArithmetic#translate()
  * - Mini proj: Hundred copies of dino: drawHundredDinos()
+ * - Ex: Longest length of dinoVector: ex3()
  */
 
 object Ch2Main extends App {
@@ -35,7 +36,8 @@ object Ch2Main extends App {
     //ex1()
     //translateDinoVector()
     //ex2()
-    drawHundredDinos()
+    //drawHundredDinos()
+    ex3()
 
 
     def drawDino():Unit = {
@@ -115,5 +117,15 @@ object Ch2Main extends App {
             val done = counter.incrementAndGet()
             log.info(s"$done / ${dinos.size} vectors drawn")
         })
+    }
+
+    /**
+     * What vector in the dino_vectors list has the longest length? Use the length function we wrote to
+     * compute the answer quickly
+     */
+    def ex3():Unit = {
+        val vectors = Utils.matrixRows(dinoVectors)
+        val longestLength =  vectors.maxBy(v => VectorArithmetic.distance(v))
+        log.info(s"Longest vector: $longestLength, length: ${VectorArithmetic.distance(longestLength)}")
     }
 }
