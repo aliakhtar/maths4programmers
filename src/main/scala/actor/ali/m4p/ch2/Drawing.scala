@@ -8,10 +8,20 @@ class Drawing {
 
     private val log = Logger[Drawing]
 
-    val fig: Figure = Figure()
-    val plt: Plot = fig.subplot(0)
+    private val fig: Figure = Figure()
+    private var pltIndex = 0
+    private var plt: Plot = fig.subplot(pltIndex)
 
 
+
+    def createNewPlot():Unit = {
+        pltIndex += 1
+        plt = fig.subplot(pltIndex)
+    }
+
+    def refresh():Unit = {
+        fig.refresh()
+    }
 
 
     def points2D(points: DenseMatrix[Double], color:String = "black", style: Char = '.'):Unit = {

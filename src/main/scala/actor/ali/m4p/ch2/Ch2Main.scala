@@ -1,8 +1,10 @@
 package actor.ali.m4p.ch2
 
+import actor.ali.m4p.util.Utils
 import breeze.linalg.{DenseMatrix, DenseVector}
 import breeze.numerics.pow
 import com.typesafe.scalalogging.Logger
+import org.bouncycastle.jce.provider.PBE.Util
 
 object Ch2Main extends App {
 
@@ -16,6 +18,7 @@ object Ch2Main extends App {
 
     //drawDino()
     //ex1()
+    translateDinoVector()
 
 
     def drawDino():Unit = {
@@ -41,6 +44,17 @@ object Ch2Main extends App {
 
 
     def translateDinoVector():Unit = {
-        val delta = DenseVector()
+        val delta = DenseVector(-1.5d, -2.5d)
+        val dinoVectors2 = DenseMatrix.zeros[Double](dinoVectors.rows, dinoVectors.cols)
+        (0 until dinoVectors.rows).foreach(i => {
+            val row = dinoVectors(i, ::).inner
+            val translated = VectorArithmetic.add(row, delta)
+            dinoVectors2(i, 0) = translated(0)
+            dinoVectors2(i, 1) = translated(1)
+        })
+
+        val drawing = new Drawing()
+        drawing.polygon2D(dinoVectors)
+        drawing.polygon2D(dinoVectors2, lineColor = "red")
     }
 }
