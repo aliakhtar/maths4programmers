@@ -1,8 +1,7 @@
-package actor.ali.m4p
+package actor.ali.m4p.ch2
 
-import actor.ali.m4p.ch2.Drawing
-import breeze.linalg.DenseMatrix
-import breeze.numerics._
+import breeze.linalg.{DenseMatrix, DenseVector}
+import breeze.numerics.pow
 import com.typesafe.scalalogging.Logger
 
 object Ch2Main extends App {
@@ -15,8 +14,13 @@ object Ch2Main extends App {
         (-1,-4), (1,-4), (2,-3), (1,-2), (3,-1), (5,1)
     ).map(_.toDouble)
 
-    drawDino()
+    //drawDino()
     //ex1()
+
+
+    def drawDino():Unit = {
+        new Drawing().polygon2D(dinoVectors)
+    }
 
 
     /**
@@ -34,7 +38,9 @@ object Ch2Main extends App {
         new Drawing().points2D(matrix)
     }
 
-    def drawDino():Unit = {
-        new Drawing().polygon2D(dinoVectors)
+
+
+    def translateDinoVector():Unit = {
+        val delta = DenseVector()
     }
 }
