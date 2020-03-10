@@ -35,4 +35,12 @@ class MatrixUtilTest extends org.scalatest.FunSuite {
         translated.cols should be(2)
     }
 
+    test("perimeter") {
+        val matrix = DenseMatrix(
+            (1d,0d),(1d,1d),(0d,1d),(0d,0d)
+        )
+
+        MatrixUtil.perimeter(matrix) should be(4.0)
+    }
+
 }

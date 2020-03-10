@@ -21,4 +21,24 @@ object MatrixUtil {
 
         copy
     }
+
+
+    /**
+     * Returns the sum of distances from each vector to the next, including the distance from the last vector to the
+     * first.
+     */
+    def perimeter(matrix: DenseMatrix[Double]):Double = {
+
+        val rows = Util.matrixRows(matrix)
+        val lastIndex = rows.indices.last
+        rows.zipWithIndex.map(t => {
+            val row = t._1
+
+            val i = t._2
+            val nextRowIndex = if (i < lastIndex) i + 1 else 0
+            val nextRow = rows(nextRowIndex)
+
+            VectorUtil.distance(row, nextRow)
+        }).sum
+    }
 }
