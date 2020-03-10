@@ -24,6 +24,7 @@ import com.typesafe.scalalogging.Logger
  * - Ex: Subtraction: VectorUtil#subtract()
  * - Ex: Distance: VectorUtil#distance()
  * - Ex: Perimeter: VectorUtil#perimeter, dinoPerimeter()
+ * - Mini proj: Search for a vector w/ matching displacement: searchDisplacement()
  */
 
 object Ch2Main extends App {
@@ -43,7 +44,8 @@ object Ch2Main extends App {
     //drawHundredDinos()
     //ex3()
     //vectorPossibilities()
-    dinoPerimeter()
+    //dinoPerimeter()
+    searchDisplacement()
 
 
     def drawDino():Unit = {
@@ -167,5 +169,38 @@ object Ch2Main extends App {
     def dinoPerimeter():Unit = {
         val perimeter = MatrixUtil.perimeter( dinoVectors )
         log.info(s"Dino perimeter: $perimeter")
+    }
+
+    /**
+     * Let u be the vector (1,2). Suppose there is another vector, v, with positive integer coordinates (n, m) such that
+     * n > m, and having distance 13 from u. What is the displacement from u to v? Hint: you can use Python to
+     * search for the vector v.
+     */
+    def searchDisplacement():Unit = {
+
+        //Note: There seems to be a typo in the question. In the solution, u is taken as (1.0, -1.0) instead of
+        //(1.0, 2.0), so lets use the solution value here
+        val u = DenseVector(1.0, -1.0)
+        val uToVDistance = 13.0
+
+        var v: Option[DenseVector[Double]] = None
+        var n: Double = -1
+
+        while (v.isEmpty && n <= 20) {
+            n = n + 1d
+            var m: Double = -1
+            while (v.isEmpty && m < n) {
+                m = m + 1
+
+                val candidate = DenseVector(n, m)
+                val distance = VectorUtil.distance(candidate, u)
+
+                log.debug(s"Trying $candidate, distance: $distance")
+                if (distance == uToVDistance && candidate(0) > candidate(1))
+                    v = Some(candidate)
+            }
+        }
+
+        log.info(s"Found candidate: ${v.get}, Displacement: ${VectorUtil.subtract(v.get, u)}, distance: ${VectorUtil.distance(v.get, u)}")
     }
 }
