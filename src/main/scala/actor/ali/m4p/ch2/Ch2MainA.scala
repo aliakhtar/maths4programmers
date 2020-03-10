@@ -9,7 +9,7 @@ import com.typesafe.scalalogging.Logger
 
 
 /**
- * Implements exercises, mini projects, and other stuff from Chapter 2.
+ * Implements exercises, mini projects, and other stuff for Chapter 2, section 2.1 + 2.2
  *
  * - Drawing basic dinosaur: drawDino()
  * - Ex: Plotting (x, x *x): ex1()
@@ -27,7 +27,7 @@ import com.typesafe.scalalogging.Logger
  * - Mini proj: Search for a vector w/ matching displacement: searchDisplacement()
  */
 
-object Ch2Main extends App {
+object Ch2MainA extends App {
 
     private val log = Logger("Ch2Main")
 
