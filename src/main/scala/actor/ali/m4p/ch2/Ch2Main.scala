@@ -22,6 +22,7 @@ import com.typesafe.scalalogging.Logger
  * - Ex: Write method to scale Vector: VectorUtil#scale()
  * - Ex: Draw points between range: vectorPossibilities()
  * - Ex: Subtraction: VectorUtil#subtract()
+ * - Ex: Distance: VectorUtil#distance()
  */
 
 object Ch2Main extends App {

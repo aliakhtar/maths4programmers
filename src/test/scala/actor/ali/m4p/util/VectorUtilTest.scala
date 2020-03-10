@@ -18,7 +18,7 @@ class VectorUtilTest extends org.scalatest.FunSuite {
         result(1) should be(2.2)
     }
 
-    test("distance") {
+    test("length") {
         val vec: DenseVector[Double] = DenseVector(4.0, 3.0)
         VectorUtil.length(vec) should be(5)
     }
@@ -46,5 +46,15 @@ class VectorUtilTest extends org.scalatest.FunSuite {
         val v2 = DenseVector(1.0, 2.0)
         val result =  VectorUtil.subtract(v1, v2)
         result should be(DenseVector(2.0, 2.0))
+    }
+
+
+    test("distance") {
+
+        //v1 - v2 should be (4.0, 3.0). The length of that will be 5.0
+        val v1 = DenseVector(8.0, 5.0)
+        val v2 = DenseVector(4.0, 2.0)
+
+        VectorUtil.distance(v1, v2) should be(5.0)
     }
 }

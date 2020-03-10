@@ -67,4 +67,9 @@ object VectorUtil {
         val negated = scale(-1, v2)
         add(v1, negated)
     }
+
+
+    def distance(v1: DenseVector[Double], v2: DenseVector[Double]):Double = {
+        length( subtract(v1, v2) )
+    }
 }
