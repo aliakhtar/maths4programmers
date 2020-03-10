@@ -22,6 +22,7 @@ import org.bouncycastle.jce.provider.PBE.Util
  * - Ex: Longest length of dinoVector: ex3()
  * - Ex: Write method to scale Vector: VectorArithmetic#scaleVector()
  * - Ex: Draw points between range: vectorPossibilities()
+ * - Ex: Subtraction: VectorArithmetic#subtract()
  */
 
 object Ch2Main extends App {

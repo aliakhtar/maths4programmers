@@ -74,4 +74,9 @@ object VectorArithmetic {
 
         copy
     }
+
+    def subtract(v1: DenseVector[Double], v2: DenseVector[Double]):DenseVector[Double] = {
+        val negated = scaleVector(-1, v2)
+        add(v1, negated)
+    }
 }

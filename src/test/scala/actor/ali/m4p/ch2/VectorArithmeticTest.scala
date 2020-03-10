@@ -65,4 +65,11 @@ class VectorArithmeticTest extends org.scalatest.FunSuite {
         result(0) should be(4.0)
         result(1) should be(8.0)
     }
+
+    test("subtract") {
+        val v1 = DenseVector(3.0, 4.0)
+        val v2 = DenseVector(1.0, 2.0)
+        val result =  VectorArithmetic.subtract(v1, v2)
+        result should be(DenseVector(2.0, 2.0))
+    }
 }
