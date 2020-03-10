@@ -79,4 +79,11 @@ object VectorUtil {
         val y = length * sin(angle)
         DenseVector(x, y)
     }
+
+    def cartesianToPolar(cart: DenseVector[Double]):DenseVector[Double] = {
+        val (x, y) = (cart(0), cart(1))
+        val len = length(cart)
+        val angle = atan2(y, x)
+        DenseVector(len, angle)
+    }
 }

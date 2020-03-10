@@ -66,4 +66,12 @@ class VectorUtilTest extends org.scalatest.FunSuite {
         math.round(cart(0)) should be(4)
         math.round(cart(1)).toInt should be(3)
     }
+
+    test("cartToPolar") {
+        val cart = DenseVector(4d, 3d)
+        val polar = VectorUtil.cartesianToPolar(cart)
+        println(polar)
+        polar(0) should be(5.0)
+        math.round(Util.fromRadian(polar(1))) should be(37.0)
+    }
 }

@@ -6,6 +6,7 @@ import com.typesafe.scalalogging.Logger
  * Contains solutions for Chapter 2, section 2.3
  *
  * - polarToCartesian: VectorUtil#polarToCartesian()
+ * - cartesianToPolar: VectorUtil#cartesianToPolar()
  */
 
 object Ch2MainB extends App {
