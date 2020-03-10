@@ -23,6 +23,7 @@ import com.typesafe.scalalogging.Logger
  * - Ex: Draw points between range: vectorPossibilities()
  * - Ex: Subtraction: VectorUtil#subtract()
  * - Ex: Distance: VectorUtil#distance()
+ * - Ex: Perimeter: VectorUtil#perimeter, dinoPerimeter()
  */
 
 object Ch2Main extends App {
@@ -41,7 +42,8 @@ object Ch2Main extends App {
     //ex2()
     //drawHundredDinos()
     //ex3()
-    vectorPossibilities()
+    //vectorPossibilities()
+    dinoPerimeter()
 
 
     def drawDino():Unit = {
@@ -160,5 +162,10 @@ object Ch2Main extends App {
 
         println(matrix)
         fig.points2D(matrix)
+    }
+
+    def dinoPerimeter():Unit = {
+        val perimeter = MatrixUtil.perimeter( dinoVectors )
+        log.info(s"Dino perimeter: $perimeter")
     }
 }
