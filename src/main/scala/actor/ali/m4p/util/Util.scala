@@ -12,6 +12,8 @@ object Util {
 
     private val log = Logger("Utils")
 
+    val Pi = breeze.numerics.constants.Pi
+
     val random = new Random()
 
 
@@ -24,4 +26,8 @@ object Util {
             row.inner
         })
     }
+
+    def toRadian(angle: Double):Double = (angle * Pi) / 180
+
+    def fromRadian(radian: Double):Double = (radian * 180) / Pi
 }

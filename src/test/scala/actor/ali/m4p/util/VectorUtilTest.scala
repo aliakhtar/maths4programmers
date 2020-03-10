@@ -57,4 +57,8 @@ class VectorUtilTest extends org.scalatest.FunSuite {
 
         VectorUtil.distance(v1, v2) should be(5.0)
     }
+
+    test("polarToCartesian") {
+
+    }
 }

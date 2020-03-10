@@ -72,4 +72,11 @@ object VectorUtil {
     def distance(v1: DenseVector[Double], v2: DenseVector[Double]):Double = {
         length( subtract(v1, v2) )
     }
+
+    def polarToCartesian(polar: DenseVector[Double]):DenseVector[Double] = {
+        val (length, angle) = (polar(0), polar(1))
+        val x = length * cos(angle)
+        val y = length * sin(angle)
+        DenseVector(x, y)
+    }
 }
