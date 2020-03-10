@@ -34,4 +34,5 @@ initialCommands :=
       |import breeze.linalg._
       |import breeze.plot._
       |import breeze.numerics._
+      |import breeze.math._
       |""".stripMargin
