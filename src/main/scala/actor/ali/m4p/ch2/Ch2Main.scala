@@ -139,24 +139,19 @@ object Ch2Main extends App {
      * Where are the possible points on the plane where the vector r ∙ u + s ∙ v could end up?
      *
      * Note: From some reason, this prints the points going up and to the right, but the book shows them down
-     * and to the left. Dunno why.
+     * and to the left. I think its just a difference in plotting between Matlin & Breeze-viz. The actual points
+     * are accurate - the same min + max points appear to be drawn.
      */
     def vectorPossibilities():Unit = {
         val u = DenseVector(-1.0, 1.0)
         val v = DenseVector(1.0, 1.0)
 
-        val rValues = (0 to 500).map(_ => Utils.random.between(-1.0 + 0.1, 1.0))
-        val sValues = (0 to 500).map(_ => Utils.random.between(-3.0 + 0.1, 3.0))
-
         val fig = new Drawing
-        val matrix = DenseMatrix.zeros[Double](rValues.size, 2)
-        rValues.indices.foreach(i => {
-            val r = rValues(i)
-            val s = sValues(i)
-
-            val scaledU = VectorArithmetic.scaleVector(r, u)
-            val scaledV = VectorArithmetic.scaleVector(s, v)
-            val uPlusV = VectorArithmetic.add(scaledU, scaledV)
+        val matrix = DenseMatrix.zeros[Double](500, 2)
+        (0 until 500).foreach(i => {
+            val r = Utils.random.between(-1.0 + 0.1, 1.0)
+            val s = Utils.random.between(-3.0 + 0.1, 3.0)
+            val uPlusV = VectorArithmetic.add( VectorArithmetic.scaleVector(r, u) , VectorArithmetic.scaleVector(s, v))
 
             matrix(i, 0) = uPlusV(0)
             matrix(i, 1) = uPlusV(1)
