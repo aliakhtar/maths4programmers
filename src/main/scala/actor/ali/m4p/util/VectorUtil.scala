@@ -1,7 +1,7 @@
 package actor.ali.m4p.util
 
-import breeze.linalg.{DenseMatrix, DenseVector}
-import breeze.numerics.sqrt
+import breeze.linalg._
+import breeze.numerics._
 import com.typesafe.scalalogging.Logger
 
 object VectorUtil {
@@ -51,21 +51,9 @@ object VectorUtil {
     }
 
 
-    def translate(translation: DenseVector[Double], matrix: DenseMatrix[Double]):DenseMatrix[Double] = {
-
-        val copy = matrix.copy
-        (0 until matrix.rows).foreach(r => {
-            (0 until matrix.cols).foreach(c => {
-                val translated = translation(c) + matrix(r, c)
-                copy(r, c) = translated
-            })
-        })
-
-        copy
-    }
 
 
-    def scaleVector(scalar: Double, vector: DenseVector[Double]):DenseVector[Double] = {
+    def scale(scalar: Double, vector: DenseVector[Double]):DenseVector[Double] = {
         val copy = vector.copy
 
         (0 until vector.length).foreach(i => {
@@ -76,7 +64,7 @@ object VectorUtil {
     }
 
     def subtract(v1: DenseVector[Double], v2: DenseVector[Double]):DenseVector[Double] = {
-        val negated = scaleVector(-1, v2)
+        val negated = scale(-1, v2)
         add(v1, negated)
     }
 }

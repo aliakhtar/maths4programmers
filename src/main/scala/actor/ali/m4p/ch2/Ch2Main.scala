@@ -2,7 +2,7 @@ package actor.ali.m4p.ch2
 
 import java.util.concurrent.atomic.AtomicInteger
 
-import actor.ali.m4p.util.{Drawing, Util, VectorUtil}
+import actor.ali.m4p.util.{Drawing, MatrixUtil, Util, VectorUtil}
 import breeze.linalg.{DenseMatrix, DenseVector}
 import breeze.numerics.pow
 import com.typesafe.scalalogging.Logger
@@ -16,10 +16,10 @@ import com.typesafe.scalalogging.Logger
  * - Translating dinoVectors to the left and down: translateDinoVector()
  * - Ex: Adding u + w, u + v, etc: ex2()
  * - Mini proj: (taking in any number of vectors): VectorUtil#addAl()
- * - Ex: Translate matrix by adding vector: VectorUtil#translate()
+ * - Ex: Translate matrix by adding vector: MatrixUtil#translate()
  * - Mini proj: Hundred copies of dino: drawHundredDinos()
  * - Ex: Longest length of dinoVector: ex3()
- * - Ex: Write method to scale Vector: VectorUtil#scaleVector()
+ * - Ex: Write method to scale Vector: VectorUtil#scale()
  * - Ex: Draw points between range: vectorPossibilities()
  * - Ex: Subtraction: VectorUtil#subtract()
  */
@@ -111,7 +111,7 @@ object Ch2Main extends App {
                                 y <- (-5 until 5))
                             yield DenseVector(12.0 * x, 10.8 * y)
 
-        val dinos = translations.map(t => VectorUtil.translate(t, dinoVectors))
+        val dinos = translations.map(t => MatrixUtil.translate(t, dinoVectors))
 
         val drawing = new Drawing
         val counter = new AtomicInteger()
@@ -151,7 +151,7 @@ object Ch2Main extends App {
         (0 until 500).foreach(i => {
             val r = Util.random.between(-1.0 + 0.1, 1.0)
             val s = Util.random.between(-3.0 + 0.1, 3.0)
-            val uPlusV = VectorUtil.add( VectorUtil.scaleVector(r, u) , VectorUtil.scaleVector(s, v))
+            val uPlusV = VectorUtil.add( VectorUtil.scale(r, u) , VectorUtil.scale(s, v))
 
             matrix(i, 0) = uPlusV(0)
             matrix(i, 1) = uPlusV(1)
