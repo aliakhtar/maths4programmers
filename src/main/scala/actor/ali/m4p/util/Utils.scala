@@ -6,10 +6,13 @@ import scala.reflect.runtime.universe._
 import com.typesafe.scalalogging.Logger
 
 import scala.reflect.ClassTag
+import scala.util.Random
 
 object Utils {
 
     private val log = Logger("Utils")
+
+    val random = new Random()
 
 
     /**

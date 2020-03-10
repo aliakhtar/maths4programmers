@@ -21,6 +21,7 @@ import org.bouncycastle.jce.provider.PBE.Util
  * - Mini proj: Hundred copies of dino: drawHundredDinos()
  * - Ex: Longest length of dinoVector: ex3()
  * - Ex: Write method to scale Vector: VectorArithmetic#scaleVector()
+ * - Ex: Draw points between range: vectorPossibilities()
  */
 
 object Ch2Main extends App {
@@ -38,7 +39,8 @@ object Ch2Main extends App {
     //translateDinoVector()
     //ex2()
     //drawHundredDinos()
-    ex3()
+    //ex3()
+    vectorPossibilities()
 
 
     def drawDino():Unit = {
@@ -129,5 +131,38 @@ object Ch2Main extends App {
         val vectors = Utils.matrixRows(dinoVectors)
         val longestLength =  vectors.maxBy(v => VectorArithmetic.distance(v))
         log.info(s"Longest vector: $longestLength, length: ${VectorArithmetic.distance(longestLength)}")
+    }
+
+    /**
+     * Suppose u = (-1,1) and v = (1,1) and suppose r and s are real numbers. Specifically, let’s assume -1 < r < 1
+     * and -3 < s < 3.
+     * Where are the possible points on the plane where the vector r ∙ u + s ∙ v could end up?
+     *
+     * Note: From some reason, this prints the points going up and to the right, but the book shows them down
+     * and to the left. Dunno why.
+     */
+    def vectorPossibilities():Unit = {
+        val u = DenseVector(-1.0, 1.0)
+        val v = DenseVector(1.0, 1.0)
+
+        val rValues = (0 to 500).map(_ => Utils.random.between(-1.0 + 0.1, 1.0))
+        val sValues = (0 to 500).map(_ => Utils.random.between(-3.0 + 0.1, 3.0))
+
+        val fig = new Drawing
+        val matrix = DenseMatrix.zeros[Double](rValues.size, 2)
+        rValues.indices.foreach(i => {
+            val r = rValues(i)
+            val s = sValues(i)
+
+            val scaledU = VectorArithmetic.scaleVector(r, u)
+            val scaledV = VectorArithmetic.scaleVector(s, v)
+            val uPlusV = VectorArithmetic.add(scaledU, scaledV)
+
+            matrix(i, 0) = uPlusV(0)
+            matrix(i, 1) = uPlusV(1)
+        })
+
+        println(matrix)
+        fig.points2D(matrix)
     }
 }
