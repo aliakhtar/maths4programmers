@@ -2,11 +2,10 @@ package actor.ali.m4p.ch2
 
 import java.util.concurrent.atomic.AtomicInteger
 
-import actor.ali.m4p.util.Utils
+import actor.ali.m4p.util.{Drawing, Util, VectorArithmetic}
 import breeze.linalg.{DenseMatrix, DenseVector}
 import breeze.numerics.pow
 import com.typesafe.scalalogging.Logger
-import org.bouncycastle.jce.provider.PBE.Util
 
 
 /**
@@ -129,7 +128,7 @@ object Ch2Main extends App {
      * compute the answer quickly
      */
     def ex3():Unit = {
-        val vectors = Utils.matrixRows(dinoVectors)
+        val vectors = Util.matrixRows(dinoVectors)
         val longestLength =  vectors.maxBy(v => VectorArithmetic.length(v))
         log.info(s"Longest vector: $longestLength, length: ${VectorArithmetic.length(longestLength)}")
     }
@@ -150,8 +149,8 @@ object Ch2Main extends App {
         val fig = new Drawing
         val matrix = DenseMatrix.zeros[Double](500, 2)
         (0 until 500).foreach(i => {
-            val r = Utils.random.between(-1.0 + 0.1, 1.0)
-            val s = Utils.random.between(-3.0 + 0.1, 3.0)
+            val r = Util.random.between(-1.0 + 0.1, 1.0)
+            val s = Util.random.between(-3.0 + 0.1, 3.0)
             val uPlusV = VectorArithmetic.add( VectorArithmetic.scaleVector(r, u) , VectorArithmetic.scaleVector(s, v))
 
             matrix(i, 0) = uPlusV(0)

@@ -1,4 +1,4 @@
-package actor.ali.m4p.ch2
+package actor.ali.m4p.util
 
 import breeze.linalg._
 import breeze.plot._

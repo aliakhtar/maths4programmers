@@ -1,7 +1,7 @@
-package actor.ali.m4p.ch2
+package actor.ali.m4p.util
 
-import breeze.linalg._
-import breeze.numerics._
+import breeze.linalg.{DenseMatrix, DenseVector}
+import breeze.numerics.sqrt
 import com.typesafe.scalalogging.Logger
 
 object VectorArithmetic {

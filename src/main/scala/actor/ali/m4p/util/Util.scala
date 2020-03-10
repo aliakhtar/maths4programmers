@@ -8,7 +8,7 @@ import com.typesafe.scalalogging.Logger
 import scala.reflect.ClassTag
 import scala.util.Random
 
-object Utils {
+object Util {
 
     private val log = Logger("Utils")
 
