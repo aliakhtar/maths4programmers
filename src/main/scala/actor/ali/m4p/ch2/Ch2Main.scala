@@ -20,6 +20,7 @@ import org.bouncycastle.jce.provider.PBE.Util
  * - Ex: Translate matrix by adding vector: VectorArithmetic#translate()
  * - Mini proj: Hundred copies of dino: drawHundredDinos()
  * - Ex: Longest length of dinoVector: ex3()
+ * - Ex: Write method to scale Vector: VectorArithmetic#scaleVector()
  */
 
 object Ch2Main extends App {
@@ -118,6 +119,7 @@ object Ch2Main extends App {
             log.info(s"$done / ${dinos.size} vectors drawn")
         })
     }
+
 
     /**
      * What vector in the dino_vectors list has the longest length? Use the length function we wrote to

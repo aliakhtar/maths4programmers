@@ -63,4 +63,15 @@ object VectorArithmetic {
 
         copy
     }
+
+
+    def scaleVector(scalar: Double, vector: DenseVector[Double]):DenseVector[Double] = {
+        val copy = vector.copy
+
+        (0 until vector.length).foreach(i => {
+            copy(i) = vector(i) * scalar
+        })
+
+        copy
+    }
 }
