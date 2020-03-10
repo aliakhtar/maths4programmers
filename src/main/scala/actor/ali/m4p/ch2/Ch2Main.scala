@@ -2,7 +2,7 @@ package actor.ali.m4p.ch2
 
 import java.util.concurrent.atomic.AtomicInteger
 
-import actor.ali.m4p.util.{Drawing, Util, VectorArithmetic}
+import actor.ali.m4p.util.{Drawing, Util, VectorUtil}
 import breeze.linalg.{DenseMatrix, DenseVector}
 import breeze.numerics.pow
 import com.typesafe.scalalogging.Logger
@@ -15,13 +15,13 @@ import com.typesafe.scalalogging.Logger
  * - Ex: Plotting (x, x *x): ex1()
  * - Translating dinoVectors to the left and down: translateDinoVector()
  * - Ex: Adding u + w, u + v, etc: ex2()
- * - Mini proj: (taking in any number of vectors): VectorArithmetic#addAl()
- * - Ex: Translate matrix by adding vector: VectorArithmetic#translate()
+ * - Mini proj: (taking in any number of vectors): VectorUtil#addAl()
+ * - Ex: Translate matrix by adding vector: VectorUtil#translate()
  * - Mini proj: Hundred copies of dino: drawHundredDinos()
  * - Ex: Longest length of dinoVector: ex3()
- * - Ex: Write method to scale Vector: VectorArithmetic#scaleVector()
+ * - Ex: Write method to scale Vector: VectorUtil#scaleVector()
  * - Ex: Draw points between range: vectorPossibilities()
- * - Ex: Subtraction: VectorArithmetic#subtract()
+ * - Ex: Subtraction: VectorUtil#subtract()
  */
 
 object Ch2Main extends App {
@@ -70,7 +70,7 @@ object Ch2Main extends App {
         val dinoVectors2 = DenseMatrix.zeros[Double](dinoVectors.rows, dinoVectors.cols)
         (0 until dinoVectors.rows).foreach(i => {
             val row = dinoVectors(i, ::).inner
-            val translated = VectorArithmetic.add(row, delta)
+            val translated = VectorUtil.add(row, delta)
             dinoVectors2(i, 0) = translated(0)
             dinoVectors2(i, 1) = translated(1)
         })
@@ -89,10 +89,10 @@ object Ch2Main extends App {
         val v: DenseVector[Double] = DenseVector(1.5, 1.5)
         val w: DenseVector[Double] = DenseVector(4.0, 1.0)
 
-        println(s"u + v = ${VectorArithmetic.add(u, v)} ")
-        println(s"v + w = ${VectorArithmetic.add(v, w)} ")
-        println(s"u + w = ${VectorArithmetic.add(u, w)} ")
-        println(s"u + v + w = ${VectorArithmetic.add(VectorArithmetic.add(u, v), w)} ")
+        println(s"u + v = ${VectorUtil.add(u, v)} ")
+        println(s"v + w = ${VectorUtil.add(v, w)} ")
+        println(s"u + w = ${VectorUtil.add(u, w)} ")
+        println(s"u + v + w = ${VectorUtil.add(VectorUtil.add(u, v), w)} ")
     }
 
 
@@ -111,7 +111,7 @@ object Ch2Main extends App {
                                 y <- (-5 until 5))
                             yield DenseVector(12.0 * x, 10.8 * y)
 
-        val dinos = translations.map(t => VectorArithmetic.translate(t, dinoVectors))
+        val dinos = translations.map(t => VectorUtil.translate(t, dinoVectors))
 
         val drawing = new Drawing
         val counter = new AtomicInteger()
@@ -129,8 +129,8 @@ object Ch2Main extends App {
      */
     def ex3():Unit = {
         val vectors = Util.matrixRows(dinoVectors)
-        val longestLength =  vectors.maxBy(v => VectorArithmetic.length(v))
-        log.info(s"Longest vector: $longestLength, length: ${VectorArithmetic.length(longestLength)}")
+        val longestLength =  vectors.maxBy(v => VectorUtil.length(v))
+        log.info(s"Longest vector: $longestLength, length: ${VectorUtil.length(longestLength)}")
     }
 
     /**
@@ -151,7 +151,7 @@ object Ch2Main extends App {
         (0 until 500).foreach(i => {
             val r = Util.random.between(-1.0 + 0.1, 1.0)
             val s = Util.random.between(-3.0 + 0.1, 3.0)
-            val uPlusV = VectorArithmetic.add( VectorArithmetic.scaleVector(r, u) , VectorArithmetic.scaleVector(s, v))
+            val uPlusV = VectorUtil.add( VectorUtil.scaleVector(r, u) , VectorUtil.scaleVector(s, v))
 
             matrix(i, 0) = uPlusV(0)
             matrix(i, 1) = uPlusV(1)

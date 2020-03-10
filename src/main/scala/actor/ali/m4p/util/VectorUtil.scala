@@ -4,7 +4,7 @@ import breeze.linalg.{DenseMatrix, DenseVector}
 import breeze.numerics.sqrt
 import com.typesafe.scalalogging.Logger
 
-object VectorArithmetic {
+object VectorUtil {
 
     private val log = Logger("VectorArithmetic")
 
