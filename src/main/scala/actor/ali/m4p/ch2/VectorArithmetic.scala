@@ -42,8 +42,8 @@ object VectorArithmetic {
     /**
      * Returns the length of a vector using pythagoras theorem
      */
-    def distance(vector: DenseVector[Double]):Double = {
-        //Distance = sqrt(x^2 + y^2)
+    def length(vector: DenseVector[Double]):Double = {
+        //Length = sqrt(x^2 + y^2)
         require(vector.length == 2)
         val x = vector(0)
         val y = vector(1)

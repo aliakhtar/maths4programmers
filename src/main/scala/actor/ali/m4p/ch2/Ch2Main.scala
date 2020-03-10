@@ -130,8 +130,8 @@ object Ch2Main extends App {
      */
     def ex3():Unit = {
         val vectors = Utils.matrixRows(dinoVectors)
-        val longestLength =  vectors.maxBy(v => VectorArithmetic.distance(v))
-        log.info(s"Longest vector: $longestLength, length: ${VectorArithmetic.distance(longestLength)}")
+        val longestLength =  vectors.maxBy(v => VectorArithmetic.length(v))
+        log.info(s"Longest vector: $longestLength, length: ${VectorArithmetic.length(longestLength)}")
     }
 
     /**

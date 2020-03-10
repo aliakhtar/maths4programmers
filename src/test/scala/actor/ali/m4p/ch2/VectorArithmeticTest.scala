@@ -24,7 +24,7 @@ class VectorArithmeticTest extends org.scalatest.FunSuite {
 
     test("distance") {
         val vec: DenseVector[Double] = DenseVector(4.0, 3.0)
-        VectorArithmetic.distance(vec) should be(5)
+        VectorArithmetic.length(vec) should be(5)
     }
 
     test("addAll") {
