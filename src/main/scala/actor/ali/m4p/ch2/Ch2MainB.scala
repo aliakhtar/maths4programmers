@@ -22,7 +22,8 @@ object Ch2MainB extends App {
 
     //travelPolar()
     //radianTan()
-    thousandPolars()
+    //thousandPolars()
+    guessAndCheck()
 
     /**
      * Suppose I travel 8.5 units from the origin at an angle of 125°, measured counterclockwise from the positive x
@@ -72,5 +73,39 @@ object Ch2MainB extends App {
         })
 
         new Drawing().line2D(carts)
+    }
+
+    /**
+     * Find the angle to get to the point (-2,3) by “guess-and-check”.
+     */
+    def guessAndCheck():Unit = {
+        val vector = DenseVector(-2.0, 3.0)
+        val length = VectorUtil.length(vector) //  3.61 ~
+
+        // We need the angle where 3.61 * cos(angle) = -2.0
+        // and 3.61 * sin(angle) = 3.0. From hints, we know that the angle is > 90 degrees and < 180 degrees,
+        //so it falls between pi and (pi / 2) radians
+
+        val radianFloor = Util.Pi / 2
+        val radianCeil = Util.Pi
+
+        val options: DenseVector[Double] = linspace(radianFloor, radianCeil, 1000)
+
+        //println(options)
+
+        val rawOptions: Seq[Double] = (0 until options.length).map(options(_))
+        val withLowestDelta = rawOptions.minBy(c => {
+            val x = length * cos(c)
+            val y = length * sin(c)
+            val xDelta = abs( vector(0) - x  )
+            val yDelta = abs( vector(1) - y )
+            xDelta + yDelta
+        })
+
+        log.info(s"Best candidate: $withLowestDelta")
+        log.info(s"X: ${length * cos(withLowestDelta)} , expected: ${vector(0)}")
+        log.info(s"Y: ${length * sin(withLowestDelta)} , expected: ${vector(1)}")
+        log.info(s"Tan: ${tan(withLowestDelta)} , expected: ${vector(1) / vector(0) }")
+
     }
 }
