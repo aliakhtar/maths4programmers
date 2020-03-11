@@ -42,6 +42,10 @@ class Drawing {
         fig.refresh()
     }
 
+    /**
+     * It looks like if we have a single vector with an x,y, we need to manually add (0,0) to the matrix, or a line
+     * is not drawn. (Once 0,0 is prepended to both components, a line is drawn from 0-x, and 0-y)
+     */
     def line(x: Double, y: Double, color: String = "blue"):Unit = {
         val xV = DenseVector(0.0, x)
         val yV = DenseVector(0.0, y)
