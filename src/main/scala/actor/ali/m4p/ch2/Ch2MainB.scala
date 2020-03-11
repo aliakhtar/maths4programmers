@@ -2,7 +2,7 @@ package actor.ali.m4p.ch2
 
 import breeze.linalg._
 import breeze.numerics._
-import actor.ali.m4p.util.{Drawing, Util}
+import actor.ali.m4p.util.{Drawing, Util, VectorUtil}
 import com.typesafe.scalalogging.Logger
 
 /**
@@ -12,6 +12,7 @@ import com.typesafe.scalalogging.Logger
  * - cartesianToPolar: VectorUtil#cartesianToPolar()
  * - Ex: Determine x,y from traveling 8.5 units @ 125 deg: travelPolar()
  * - Print tan of 116.57 = radianTan()
+ * - Ex: thousand polars - radians -> thousandPolars()
  */
 
 object Ch2MainB extends App {
@@ -20,7 +21,8 @@ object Ch2MainB extends App {
 
 
     //travelPolar()
-    radianTan()
+    //radianTan()
+    thousandPolars()
 
     /**
      * Suppose I travel 8.5 units from the origin at an angle of 125°, measured counterclockwise from the positive x
@@ -43,5 +45,36 @@ object Ch2MainB extends App {
         val radians = Util.toRadian(degrees)
         val t = tan(radians)
         println(s"Tan: $t")
+    }
+
+    /**
+     * The following list comprehension creates 1000 points in polar coordinates.
+     * [(cos(5*x*pi/500.0), 2*pi*x/1000.0) for x in range(0,1000)]
+     * In Python code, convert them to cartesian coordinates, and connect them in a closed loop with line segments
+     * to draw a picture.
+     */
+    def thousandPolars():Unit = {
+        val polars = DenseMatrix.zeros[Double](1000, 2)
+        (0 until 1000).foreach(x => {
+            val len = cos(5*x*Util.Pi/500.0)
+            val angle = 2*Util.Pi*x/1000.0
+            polars(x, 0) = len
+            polars(x, 1) = angle
+        })
+
+        log.info("Polars:")
+        println(polars)
+
+        val carts = DenseMatrix.zeros[Double](1000, 2)
+        (0 until 1000).foreach(r => {
+          val polar = polars(r, ::).inner
+          val cart: DenseVector[Double] = VectorUtil.polarToCartesian(polar)
+          carts(r, 0) = cart(0)
+          carts(r, 1) = cart(1)
+        })
+
+        log.info("Carts:")
+        println(carts)
+        new Drawing().line2D(carts)
     }
 }
