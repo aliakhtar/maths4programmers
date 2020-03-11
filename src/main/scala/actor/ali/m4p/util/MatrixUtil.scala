@@ -44,10 +44,6 @@ object MatrixUtil {
 
 
     def rotate(radianAngle: Double, matrix: DenseMatrix[Double]):DenseMatrix[Double] = {
-        matrix(*, ::).map(v => {
-            val polar = VectorUtil.cartesianToPolar(v)
-            polar(1) += radianAngle
-            VectorUtil.polarToCartesian(polar)
-        })
+        matrix(*, ::).map(VectorUtil.rotate(radianAngle, _))
     }
 }

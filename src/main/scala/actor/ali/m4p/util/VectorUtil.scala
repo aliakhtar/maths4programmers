@@ -86,4 +86,10 @@ object VectorUtil {
         val angle = atan2(y, x)
         DenseVector(len, angle)
     }
+
+    def rotate(radianAngle: Double, cartesianVector: DenseVector[Double]):DenseVector[Double] = {
+        val polar = cartesianToPolar(cartesianVector)
+        polar(1) += radianAngle
+        polarToCartesian(polar)
+    }
 }
