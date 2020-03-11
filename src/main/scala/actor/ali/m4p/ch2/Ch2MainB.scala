@@ -62,8 +62,6 @@ object Ch2MainB extends App {
             polars(x, 1) = angle
         })
 
-        log.info("Polars:")
-        println(polars)
 
         val carts = DenseMatrix.zeros[Double](1000, 2)
         (0 until 1000).foreach(r => {
@@ -73,8 +71,6 @@ object Ch2MainB extends App {
           carts(r, 1) = cart(1)
         })
 
-        log.info("Carts:")
-        println(carts)
         new Drawing().line2D(carts)
     }
 }
