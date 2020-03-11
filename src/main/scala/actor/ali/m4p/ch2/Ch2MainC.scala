@@ -5,7 +5,7 @@ import com.typesafe.scalalogging.Logger
 
 
 /**
- * Contains solutions for Chapter 2, section 2.4 + 2.5
+ * Contains solutions for Chapter 2, section 2.4
  */
 object Ch2MainC extends App {
 

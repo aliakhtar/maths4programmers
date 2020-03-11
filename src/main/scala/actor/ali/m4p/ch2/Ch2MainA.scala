@@ -5,6 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger
 import actor.ali.m4p.util.{Drawing, MatrixUtil, Util, VectorUtil}
 import breeze.linalg._
 import breeze.numerics._
+import Util.dinoVectors
 import com.typesafe.scalalogging.Logger
 
 
@@ -30,12 +31,6 @@ import com.typesafe.scalalogging.Logger
 object Ch2MainA extends App {
 
     private val log = Logger("Ch2Main")
-
-    val dinoVectors = DenseMatrix(
-        (6,4), (3,1), (1,2), (-1,5), (-2,5), (-3,4), (-4,4),
-        (-5,3), (-5,2), (-2,2), (-5,1), (-4,0), (-2,1), (-1,0), (0,-3),
-        (-1,-4), (1,-4), (2,-3), (1,-2), (3,-1), (5,1)
-    ).map(_.toDouble)
 
     drawDino()
     //ex1()

@@ -12,9 +12,15 @@ object Util {
 
     private val log = Logger("Utils")
 
-    val Pi = breeze.numerics.constants.Pi
+    val Pi: Double = breeze.numerics.constants.Pi
 
     val random = new Random()
+
+    val dinoVectors =  DenseMatrix(
+        (6,4), (3,1), (1,2), (-1,5), (-2,5), (-3,4), (-4,4),
+        (-5,3), (-5,2), (-2,2), (-5,1), (-4,0), (-2,1), (-1,0), (0,-3),
+        (-1,-4), (1,-4), (2,-3), (1,-2), (3,-1), (5,1)
+    ).map(_.toDouble)
 
 
     /**
