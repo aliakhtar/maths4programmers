@@ -36,4 +36,5 @@ initialCommands :=
       |import breeze.numerics._
       |import breeze.numerics.constants._
       |import breeze.math._
+      |import actor.ali.m4p.util._
       |""".stripMargin

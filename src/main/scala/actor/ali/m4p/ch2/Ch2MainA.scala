@@ -3,8 +3,8 @@ package actor.ali.m4p.ch2
 import java.util.concurrent.atomic.AtomicInteger
 
 import actor.ali.m4p.util.{Drawing, MatrixUtil, Util, VectorUtil}
-import breeze.linalg.{DenseMatrix, DenseVector}
-import breeze.numerics.pow
+import breeze.linalg._
+import breeze.numerics._
 import com.typesafe.scalalogging.Logger
 
 
@@ -37,7 +37,7 @@ object Ch2MainA extends App {
         (-1,-4), (1,-4), (2,-3), (1,-2), (3,-1), (5,1)
     ).map(_.toDouble)
 
-    //drawDino()
+    drawDino()
     //ex1()
     //translateDinoVector()
     //ex2()
@@ -45,7 +45,7 @@ object Ch2MainA extends App {
     //ex3()
     //vectorPossibilities()
     //dinoPerimeter()
-    searchDisplacement()
+    //searchDisplacement()
 
 
     def drawDino():Unit = {

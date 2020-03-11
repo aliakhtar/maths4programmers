@@ -42,6 +42,13 @@ class Drawing {
         fig.refresh()
     }
 
+    def line(x: Double, y: Double, color: String = "blue"):Unit = {
+        val xV = DenseVector(0.0, x)
+        val yV = DenseVector(0.0, y)
+        plt += plot(xV, yV, colorcode = color)
+        fig.refresh()
+    }
+
     def polygon2D(points: DenseMatrix[Double], pointColor:String = "black", lineColor: String = "blue"):Unit = {
         points2D(points, pointColor)
         line2D(points, lineColor)
