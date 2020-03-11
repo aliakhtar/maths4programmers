@@ -41,4 +41,13 @@ object MatrixUtil {
             VectorUtil.distance(row, nextRow)
         }).sum
     }
+
+
+    def rotate(radianAngle: Double, matrix: DenseMatrix[Double]):DenseMatrix[Double] = {
+        matrix(*, ::).map(v => {
+            val polar = VectorUtil.cartesianToPolar(v)
+            polar(1) += radianAngle
+            VectorUtil.polarToCartesian(polar)
+        })
+    }
 }

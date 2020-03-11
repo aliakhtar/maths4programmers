@@ -21,11 +21,7 @@ object Ch2MainC extends App {
 
     def rotateDino() : Unit = {
         val angle = Pi / 4.0 //45 degrees
-        val dinoRotated = dinoVectors(*, ::).map(v => {
-            val polar = VectorUtil.cartesianToPolar(v)
-            polar(1) = polar(1) + angle
-            VectorUtil.polarToCartesian(polar)
-        })
+        val dinoRotated = MatrixUtil.rotate(angle, dinoVectors)
 
         val drawing = new Drawing()
         drawing.polygon2D(dinoVectors)
