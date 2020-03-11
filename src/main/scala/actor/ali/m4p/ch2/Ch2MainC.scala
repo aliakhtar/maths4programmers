@@ -11,13 +11,15 @@ import actor.ali.m4p.util.Util._
  * Contains solutions for Chapter 2, section 2.4
  *
  * - Draw rotated dino by 45 deg: rotateDino()
+ * - Rotate, then translate dino: rotateThenTranslate()
  */
 object Ch2MainC extends App {
 
     private val log = Logger("Ch2MainC")
 
 
-    rotateDino()
+    //rotateDino()
+    rotateThenTranslate()
 
     def rotateDino() : Unit = {
         val angle = Pi / 4.0 //45 degrees
@@ -29,7 +31,12 @@ object Ch2MainC extends App {
     }
 
 
-    def translateThenRotateDino():Unit = {
-        //val result = M
+    def rotateThenTranslate():Unit = {
+        val result = MatrixUtil.translate(DenseVector(8.0, 8.0),
+                                            MatrixUtil.rotate(5 * Pi / 3, dinoVectors))
+
+        val drawing = new Drawing()
+        drawing.polygon2D(dinoVectors)
+        drawing.polygon2D(result, lineColor = "red")
     }
 }
