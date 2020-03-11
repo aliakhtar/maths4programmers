@@ -27,4 +27,9 @@ object Ch2MainC extends App {
         drawing.polygon2D(dinoVectors)
         drawing.polygon2D(dinoRotated, lineColor = "red")
     }
+
+
+    def translateThenRotateDino():Unit = {
+        //val result = M
+    }
 }

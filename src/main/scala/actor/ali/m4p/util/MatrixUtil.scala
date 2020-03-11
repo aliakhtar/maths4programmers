@@ -11,15 +11,7 @@ object MatrixUtil {
 
     def translate(translation: DenseVector[Double], matrix: DenseMatrix[Double]):DenseMatrix[Double] = {
 
-        val copy = matrix.copy
-        (0 until matrix.rows).foreach(r => {
-            (0 until matrix.cols).foreach(c => {
-                val translated = translation(c) + matrix(r, c)
-                copy(r, c) = translated
-            })
-        })
-
-        copy
+        matrix(*, ::).map(VectorUtil.add(_, translation))
     }
 
 
@@ -41,7 +33,6 @@ object MatrixUtil {
             VectorUtil.distance(row, nextRow)
         }).sum
     }
-
 
     def rotate(radianAngle: Double, matrix: DenseMatrix[Double]):DenseMatrix[Double] = {
         matrix(*, ::).map(VectorUtil.rotate(radianAngle, _))
