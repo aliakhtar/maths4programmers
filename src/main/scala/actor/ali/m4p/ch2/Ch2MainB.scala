@@ -22,8 +22,8 @@ object Ch2MainB extends App {
 
     //travelPolar()
     //radianTan()
-    //thousandPolars()
-    guessAndCheck()
+    thousandPolars()
+    //guessAndCheck()
 
     /**
      * Suppose I travel 8.5 units from the origin at an angle of 125°, measured counterclockwise from the positive x
