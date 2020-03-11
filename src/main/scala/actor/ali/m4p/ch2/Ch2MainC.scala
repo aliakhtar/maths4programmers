@@ -1,9 +1,9 @@
 package actor.ali.m4p.ch2
 
-import actor.ali.m4p.util.{Drawing, MatrixUtil, Util, VectorUtil}
+import actor.ali.m4p.util.{Drawing, DrawingUtil, MatrixUtil, Util, VectorUtil}
 import com.typesafe.scalalogging.Logger
 import breeze.linalg._
-import breeze.numerics
+import breeze.numerics._
 import actor.ali.m4p.util.Util._
 
 
@@ -12,6 +12,8 @@ import actor.ali.m4p.util.Util._
  *
  * - Draw rotated dino by 45 deg: rotateDino()
  * - Rotate, then translate dino: rotateThenTranslate()
+ * - Ex: rotate() function: MatrixUtil.rotate()
+ * - Ex: function to draw an N sided polygon: polygonTest()
  */
 object Ch2MainC extends App {
 
@@ -19,7 +21,8 @@ object Ch2MainC extends App {
 
 
     //rotateDino()
-    rotateThenTranslate()
+    //rotateThenTranslate()
+    polygonTest()
 
     def rotateDino() : Unit = {
         val angle = Pi / 4.0 //45 degrees
@@ -38,5 +41,10 @@ object Ch2MainC extends App {
         val drawing = new Drawing()
         drawing.polygon2D(dinoVectors)
         drawing.polygon2D(result, lineColor = "red")
+    }
+
+    def polygonTest():Unit = {
+        val poly = DrawingUtil.polygon(7)
+        new Drawing().polygon2D(poly)
     }
 }
