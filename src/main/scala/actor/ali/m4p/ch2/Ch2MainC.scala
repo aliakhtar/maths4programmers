@@ -15,6 +15,8 @@ import actor.ali.m4p.util.Util._
  * - Ex: rotate() function: MatrixUtil.rotate()
  * - Ex: function to draw an N sided polygon: polygonTest()
  * - Ex: translate then rotate: rotateAndTranslate()
+ *
+ * Section 2.5 is just explaining how to draw stuff which is implemented in the Drawing class.
  */
 object Ch2MainC extends App {
 
